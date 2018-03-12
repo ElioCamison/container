@@ -74,13 +74,6 @@ public class Containers {
         // Cerca la posicio de l'element que te el numero 9 a la llista l1
         System.out.println("-->" + l1.indexOf(9));
 
-        /*for (int i = 0; i < l1.size(); i++) {
-            if (l1.get(i) == 9){
-                System.out.println(i);
-
-            }
-        }*/
-
         // A l1, substitueix l'element a la posició 1 per el valor 5
         System.out.println("Abans d'esborrar " + l1);
         l1.remove(l1.indexOf(6));
@@ -116,11 +109,6 @@ public class Containers {
 
         // Torna a crear l'objecte iterator i has de recórrer la llista, però has d'esborrar l'element "50"
 
-//        for (int i = 0; i < l1.size(); i++) {
-//            if (l1.get(i) == 50) {
-//                l1.remove(i);
-//            }
-//        }
         System.out.println("-->" + l1);
         it = l1.iterator();
         while (it.hasNext()){
@@ -188,71 +176,115 @@ public class Containers {
         // Imprimeix la cúa
         System.out.println(cuaPrioritat);
         // Fes un bucle que vagi traient cada element i l'imprimeixi de la cúa de prioritat, mentre en quedin
-
+        Iterator<Integer> it = cuaPrioritat.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
     }
 
     static void piles() {
         // Declara una pila (stack) com una LinkedList
+        Stack<Integer> pila = new Stack<Integer>();
+
+        //Stack<Integer> pila1 = new LinkedList<Integer>();
 
         // Push a la pila dels valors 15, 56, 21 i -5
+        pila.push(15);
+        pila.push(56);
+        pila.push(21);
+        pila.push(-5);
 
         // Imprimeix la pila
+        System.out.println(pila);
 
         // Imprimeix el valor de damunt la pila, sense treurer-lo
-
+        System.out.println(pila.peek());
         // Treu i imprimeix els valors de la pila
-
+        Iterator<Integer> it = pila.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
     }
 
     static void conjunts() {
         // Declara un conjunt d'enters anomenat "set"
+        Set<Integer> set = new HashSet<>();
 
         // Afegeix els elements 14, 6 i 3
+        set.add(14);
+        set.add(6);
+        set.add(3);
 
         // Imprimeix el conjunt
+        System.out.println(set);
 
         // Afegeix l'element 6 un altre cop
-
+        set.add(6);
         // Imprimeix el conjunt
-
+        System.out.println(set);
 
         // Construeix un conjunt de caràcters anomenat set2 (Usa la class Character, no char)
         // i introdueix totes les lletres de la paraula "ESTERNOCLEIDOMASTOIDEO"
         // Després, imprimeix el conjunt
+        Set<Character> set2 = new HashSet<>();
+        String paraula = "ESTERNOCLEIDOMASTOIDEO";
 
+        for (int i = 0; i < paraula.length(); i++) {
+            set2.add(paraula.charAt(i));
+        }
+        System.out.println(set2);
 
         // Empra un iterador (it) per recórrer tot el conjunt de caràcters anterior i imprimeix element a element
-
+        Iterator<Character> it = set2.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
     }
 
     static void mapes() {
         // Construeix un mapa (map) que associi un String amb un altre String
+        Map<String,String> mapa = new HashMap<String,String>();
 
         // Introdueix el parell: "RENAULT" - "CLIO"
-
+        mapa.put("RENAULT", "CLIO");
         // Introdueix el parell: "VOLKSWAGEN" - "GOLF"
-
+        mapa.put("VOLKSWAGEN", "GOLF");
         // Introdueix el parell: "PEUGEOT" - "308"
-
+        mapa.put("PEUGEOT", "308");
         // Introdueix el parell: "HONDA" - "CIVIC"
-
+        mapa.put("HONDA", "CIVIC");
         // Introdueix el parell: "PEUGEOT" - "RCZ"
+        mapa.put("PEUGEOT", "RCZ");
 
         // Imprimeix el mapa
-
+        System.out.println(mapa);
 
         // Treu el conjunt de claus del mapa (variable kset)
+        mapa.putAll(mapa);
 
         // Imprimeix aquest conjunt
+        System.out.println(mapa);
 
         // Treu el valor de la clau "PEUGEOT" i imprimeix-ho
-
+        System.out.println(mapa.get("PEUGEOT"));
         // Mitjançant un iterador, imprimeix tots els parells clau-valor del mapa
 
+        //Iterator<String> it = mapa.iterator();                              <<<<<<<<<<<<<<<<<<<<<<<<< REVISAR  >>>>>>>>>>>>>>>>>>>>>>>>>
 
         // Empra un mapa que associi un caràcter a un número enter per dur el compte
         // de quantes vegades surt cada lletra a la paraula "ESTERNOCLEIDOMASTOIDEO"
+        Map<Character,Integer> mapa2 = new HashMap<Character, Integer>();
+        String paraula2 = "ESTERNOCLEIDOMASTOIDEO";
+        int count = 0;
 
+        for (int i = 0; i < paraula2.length(); i++) {
+            if(paraula2.charAt(i) == paraula2.indexOf(i)){
+                count++;
+                mapa2.put(paraula2.charAt(i),count);
+            }
+            count = 0;
+        }
+        System.out.println(mapa2);
 
     }
 
