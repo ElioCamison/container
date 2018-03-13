@@ -180,6 +180,12 @@ public class Containers {
         while(it.hasNext()){
             System.out.println(it.next());
         }
+        //Forma correcte
+        System.out.println("Fes un bucle que vagi traient cada element i l'imprimeixi de la cúa de prioritat, mentre en quedin");
+        while(!cuaPrioritat.isEmpty()){
+            System.out.println(cuaPrioritat.poll());
+        }
+
     }
 
     static void piles() {
@@ -199,11 +205,17 @@ public class Containers {
 
         // Imprimeix el valor de damunt la pila, sense treurer-lo
         System.out.println(pila.peek());
-        // Treu i imprimeix els valors de la pila
+        // Treu i imprimeix els valors de la pila                  <<<<<<<<<<S'ha de fer amb un pop()>>>>>>>>>>>>
         Iterator<Integer> it = pila.iterator();
         while(it.hasNext()){
             System.out.println(it.next());
         }
+
+        System.out.println("Forma correcta");
+        while (!pila.isEmpty()){
+            System.out.println(pila.pop());
+        }
+
     }
 
     static void conjunts() {
@@ -260,21 +272,41 @@ public class Containers {
         System.out.println(mapa);
 
         // Treu el conjunt de claus del mapa (variable kset)
-        mapa.putAll(mapa);
+        Set kset = mapa.keySet();
+
 
         // Imprimeix aquest conjunt
-        System.out.println(mapa);
+        System.out.println(kset);
 
         // Treu el valor de la clau "PEUGEOT" i imprimeix-ho
         System.out.println(mapa.get("PEUGEOT"));
         // Mitjançant un iterador, imprimeix tots els parells clau-valor del mapa
 
-        //Iterator<String> it = mapa.iterator();                              <<<<<<<<<<<<<<<<<<<<<<<<< REVISAR  >>>>>>>>>>>>>>>>>>>>>>>>>
+        Iterator<String> it = mapa.keySet().iterator();
+        while(it.hasNext()) {
+            String c = it.next();
+            String v = mapa.get(c);
+            System.out.printf("Clau : %s Valor: %s\n" ,c,v );
+        }
 
         // Empra un mapa que associi un caràcter a un número enter per dur el compte
         // de quantes vegades surt cada lletra a la paraula "ESTERNOCLEIDOMASTOIDEO"
         Map<Character,Integer> mapa2 = new HashMap<Character, Integer>();
-        String paraula2 = "ESTERNOCLEIDOMASTOIDEO";
+        // EXPLICACIÓ PERE
+        for(char c: "ESTERNOCLEIDOMASTOIDEO".toCharArray()){
+            if (mapa2.containsKey(c)){
+                Integer i = mapa2.get(c);
+                mapa2.put(c,++i);
+            } else {
+                mapa2.put(c,1);
+            }
+        }
+
+        System.out.println(mapa2);
+
+
+        //////////
+       /* String paraula2 = "ESTERNOCLEIDOMASTOIDEO";
         int count = 0;
 
         for (int i = 0; i < paraula2.length(); i++) {
@@ -284,7 +316,7 @@ public class Containers {
             }
             count = 0;
         }
-        System.out.println(mapa2);
+        System.out.println(mapa2);*/
 
     }
 
